@@ -1,6 +1,6 @@
 {
   "name": "@amaui/heap",
-  "version": "1.0.1111",
+  "version": "1.0.11111",
   "description": "Min/Max Heap",
   "repository": "https://github.com/amaui-org/amaui-heap.git",
   "author": "Lazar <lazareric.com@gmail.com>",
@@ -46,8 +46,8 @@
   },
   "devDependencies": {
     "@amaui/models": "^1.0.11",
-    "@amaui/test": "^1.0.1114",
-    "@amaui/utils": "^1.0.174",
+    "@amaui/test": "^1.0.1141",
+    "@amaui/utils": "^1.0.11111",
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-class-properties": "^7.17.12",
