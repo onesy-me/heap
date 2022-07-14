@@ -1,6 +1,6 @@
 {
   "name": "@amaui/heap",
-  "version": "1.0.11114",
+  "version": "1.0.11117",
   "description": "Min/Max Heap",
   "repository": "https://github.com/amaui-org/amaui-heap.git",
   "author": "Lazar <lazareric.com@gmail.com>",
@@ -42,12 +42,12 @@
     "test": "yarn lint && yarn type && yarn build && yarn test:pre && yarn cov && yarn test:post"
   },
   "dependencies": {
+    "@amaui/utils": "^1.0.11411",
     "@babel/runtime": "^7.18.3"
   },
   "devDependencies": {
     "@amaui/models": "^1.0.1111",
     "@amaui/test": "^1.0.11111",
-    "@amaui/utils": "^1.0.11114",
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-class-properties": "^7.17.12",
@@ -82,7 +82,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org"
   },
   "sideEffects": false,
   "engines": {
