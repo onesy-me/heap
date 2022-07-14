@@ -171,7 +171,7 @@ async function addLicense() {
   );
 
   if (log) console.log(`🌱 Appended LICENSE to important build files`);
-};
+}
 
 async function moveFile(value) {
   const source = path.resolve(wd, value);
