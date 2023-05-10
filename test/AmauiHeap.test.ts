@@ -5,7 +5,7 @@ import { evaluate } from '../utils/js/test/utils';
 
 import { AmauiHeap, AmauiNode } from '../src';
 
-group('@amaui/heap', () => {
+group('AmauiHeap', () => {
 
   to('AmauiNode', async () => {
     const value = new AmauiNode('a');
