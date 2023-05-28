@@ -322,20 +322,6 @@ group('AmauiHeap', () => {
       values.forEach(value => assert(value).eql([1, 3, 4, 4, 5, 7, 7, 4]));
     });
 
-    to('swap', async () => {
-      const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]).swap(1, 4);
-
-      const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]).swap(1, 4);
-
-        return value.array;
-      });
-      const valueNode = value.array;
-      const values = [valueNode, ...valueBrowsers];
-
-      values.forEach(value => assert(value).eql([1, 5, 4, 4, 3, 7, 7]));
-    });
-
     to('make', async () => {
       const value = new AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
@@ -378,50 +364,6 @@ group('AmauiHeap', () => {
         [7, 5, 4, undefined, undefined, false, true, true, false],
         [7, 6, 4, undefined, undefined, false, true, false, true],
       ]));
-    });
-
-    to('heapifyUp', async () => {
-      const value = new AmauiHeap();
-
-      value.values = [new AmauiNode(4), new AmauiNode(1), new AmauiNode(3)];
-
-      value.heapifyUp(1);
-
-      const valueBrowsers = await evaluate((window: any) => {
-        const value = new window.AmauiHeap.AmauiHeap();
-
-        value.values = [new window.AmauiHeap.AmauiNode(4), new window.AmauiHeap.AmauiNode(1), new window.AmauiHeap.AmauiNode(3)];
-
-        value.heapifyUp(1);
-
-        return value.array;
-      });
-      const valueNode = value.array;
-      const values = [valueNode, ...valueBrowsers];
-
-      values.forEach(value => assert(value).eql([1, 4, 3]));
-    });
-
-    to('heapifyDown', async () => {
-      const value = new AmauiHeap();
-
-      value.values = [new AmauiNode(4), new AmauiNode(1), new AmauiNode(3)];
-
-      value.heapifyDown(0);
-
-      const valueBrowsers = await evaluate((window: any) => {
-        const value = new window.AmauiHeap.AmauiHeap();
-
-        value.values = [new window.AmauiHeap.AmauiNode(4), new window.AmauiHeap.AmauiNode(1), new window.AmauiHeap.AmauiNode(3)];
-
-        value.heapifyDown(0);
-
-        return value.array;
-      });
-      const valueNode = value.array;
-      const values = [valueNode, ...valueBrowsers];
-
-      values.forEach(value => assert(value).eql([1, 4, 3]));
     });
 
   });

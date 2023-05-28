@@ -82,12 +82,6 @@ export class AmauiHeap {
     return this;
   }
 
-  public swap(index: number, index1: number): AmauiHeap {
-    [this.values[index], this.values[index1]] = [this.values[index1], this.values[index]];
-
-    return this;
-  }
-
   public make(value: Array<any>): AmauiHeap {
     this.values = value.map(value_ => value_ instanceof AmauiNode ? value_ : new AmauiNode(value_));
 
@@ -112,7 +106,13 @@ export class AmauiHeap {
     });
   }
 
-  public heapifyUp(index_ = this.values.length - 1): void {
+  private swap(index: number, index1: number): AmauiHeap {
+    [this.values[index], this.values[index1]] = [this.values[index1], this.values[index]];
+
+    return this;
+  }
+
+  private heapifyUp(index_ = this.values.length - 1): void {
     if (this.values.length > 0) {
       let index = index_;
       let parentIndex = AmauiHeap.parent(index);
@@ -132,7 +132,7 @@ export class AmauiHeap {
     }
   }
 
-  public heapifyDown(index_ = 0): void {
+  private heapifyDown(index_ = 0): void {
     if (!AmauiHeap.isLeaf(index_, this.values)) {
       const index = index_;
 
