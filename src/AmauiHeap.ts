@@ -1,12 +1,12 @@
-import is from '@amaui/utils/is';
+import is from '@onesy/utils/is';
 
-export interface IAmauiNode {
+export interface IOnesyNode {
   value?: any;
 
   [p: string]: any;
 }
 
-export class AmauiNode implements IAmauiNode {
+export class OnesyNode implements IOnesyNode {
   [p: string]: any;
 
   public constructor(
@@ -17,16 +17,16 @@ export class AmauiNode implements IAmauiNode {
 
 export type TVariant = 'min' | 'max';
 
-export type TMethodForEach = (value: AmauiNode, index: number, parent: AmauiNode, left: AmauiNode, right: AmauiNode, isPriority: boolean, isLeaf: boolean, isLeft: boolean, isRight: boolean) => any;
+export type TMethodForEach = (value: OnesyNode, index: number, parent: OnesyNode, left: OnesyNode, right: OnesyNode, isPriority: boolean, isLeaf: boolean, isLeft: boolean, isRight: boolean) => any;
 
-export class AmauiHeap {
-  public values: Array<AmauiNode> = [];
+export class OnesyHeap {
+  public values: Array<OnesyNode> = [];
 
-  public static get min(): AmauiHeap { return new AmauiHeap('min'); }
+  public static get min(): OnesyHeap { return new OnesyHeap('min'); }
 
-  public static get max(): AmauiHeap { return new AmauiHeap('max'); }
+  public static get max(): OnesyHeap { return new OnesyHeap('max'); }
 
-  public static make(value: any[], variant?: TVariant): AmauiHeap { return new AmauiHeap(variant).make(value); }
+  public static make(value: any[], variant?: TVariant): OnesyHeap { return new OnesyHeap(variant).make(value); }
 
   public static left(index: number): number { return (2 * index) + 1; }
 
@@ -50,13 +50,13 @@ export class AmauiHeap {
 
   public get array(): any[] { return this.values.map(item => item.value); }
 
-  public get first(): AmauiNode { return this.values[0]; }
+  public get first(): OnesyNode { return this.values[0]; }
 
-  public get leafs(): Array<AmauiNode> {
-    return this.values.filter((_, index) => AmauiHeap.isLeaf(index, this.values));
+  public get leafs(): Array<OnesyNode> {
+    return this.values.filter((_, index) => OnesyHeap.isLeaf(index, this.values));
   }
 
-  public get remove(): AmauiNode {
+  public get remove(): OnesyNode {
     if (!this.values.length) return;
 
     const first = this.first;
@@ -70,11 +70,11 @@ export class AmauiHeap {
     return first;
   }
 
-  public add(value: AmauiNode | any): AmauiHeap {
-    const amauiNode = value instanceof AmauiNode ? value : new AmauiNode(value);
+  public add(value: OnesyNode | any): OnesyHeap {
+    const onesyNode = value instanceof OnesyNode ? value : new OnesyNode(value);
 
     // Push to the end of the values array
-    this.values.push(amauiNode);
+    this.values.push(onesyNode);
 
     // Heapify up the added values value
     this.heapifyUp();
@@ -82,8 +82,8 @@ export class AmauiHeap {
     return this;
   }
 
-  public make(value: Array<any>): AmauiHeap {
-    this.values = value.map(value_ => value_ instanceof AmauiNode ? value_ : new AmauiNode(value_));
+  public make(value: Array<any>): OnesyHeap {
+    this.values = value.map(value_ => value_ instanceof OnesyNode ? value_ : new OnesyNode(value_));
 
     for (let i = Math.floor(this.values.length / 2); i >= 0; i--) {
       this.heapifyDown(i);
@@ -94,19 +94,19 @@ export class AmauiHeap {
 
   public forEach(method: TMethodForEach): void {
     if (is('function', method)) this.values.forEach((value, index) => {
-      const parent = this.values[AmauiHeap.parent(index)];
-      const left = this.values[AmauiHeap.left(index)];
-      const right = this.values[AmauiHeap.right(index)];
-      const isPriority = AmauiHeap.isPriority(index);
-      const isLeaf = AmauiHeap.isLeaf(index, this.values);
-      const isLeft = AmauiHeap.isLeft(index);
-      const isRight = AmauiHeap.isRight(index);
+      const parent = this.values[OnesyHeap.parent(index)];
+      const left = this.values[OnesyHeap.left(index)];
+      const right = this.values[OnesyHeap.right(index)];
+      const isPriority = OnesyHeap.isPriority(index);
+      const isLeaf = OnesyHeap.isLeaf(index, this.values);
+      const isLeft = OnesyHeap.isLeft(index);
+      const isRight = OnesyHeap.isRight(index);
 
       method(value, index, parent, left, right, isPriority, isLeaf, isLeft, isRight);
     });
   }
 
-  private swap(index: number, index1: number): AmauiHeap {
+  private swap(index: number, index1: number): OnesyHeap {
     [this.values[index], this.values[index1]] = [this.values[index1], this.values[index]];
 
     return this;
@@ -115,7 +115,7 @@ export class AmauiHeap {
   private heapifyUp(index_ = this.values.length - 1): void {
     if (this.values.length > 0) {
       let index = index_;
-      let parentIndex = AmauiHeap.parent(index);
+      let parentIndex = OnesyHeap.parent(index);
 
       while (
         index > 0 &&
@@ -127,17 +127,17 @@ export class AmauiHeap {
         this.swap(parentIndex, index);
 
         index = parentIndex;
-        parentIndex = AmauiHeap.parent(index);
+        parentIndex = OnesyHeap.parent(index);
       }
     }
   }
 
   private heapifyDown(index_ = 0): void {
-    if (!AmauiHeap.isLeaf(index_, this.values)) {
+    if (!OnesyHeap.isLeaf(index_, this.values)) {
       const index = index_;
 
-      const left = AmauiHeap.left(index);
-      const right = AmauiHeap.right(index);
+      const left = OnesyHeap.left(index);
+      const right = OnesyHeap.right(index);
       let swapIndex = index;
 
       // Swap left and parent if swap to be made

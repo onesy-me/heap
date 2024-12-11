@@ -1,19 +1,19 @@
 /* tslint:disable: no-shadowed-variable */
-import { assert } from '@amaui/test';
+import { assert } from '@onesy/test';
 
 import { evaluate } from '../utils/js/test/utils';
 
-import { AmauiHeap, AmauiNode } from '../src';
+import { OnesyHeap, OnesyNode } from '../src';
 
-group('AmauiHeap', () => {
+group('OnesyHeap', () => {
 
-  to('AmauiNode', async () => {
-    const value = new AmauiNode('a');
+  to('OnesyNode', async () => {
+    const value = new OnesyNode('a');
 
     value.a = 4;
 
     const valueBrowsers = await evaluate((window: any) => {
-      const value = new window.AmauiHeap.AmauiNode('a');
+      const value = new window.OnesyHeap.OnesyNode('a');
 
       value.a = 4;
 
@@ -28,13 +28,13 @@ group('AmauiHeap', () => {
     });
   });
 
-  group('AmauiHeap', async () => {
+  group('OnesyHeap', async () => {
 
     to('min', async () => {
-      const value = AmauiHeap.min.make([4, 1, 7, 3, 5, 4, 7]);
+      const value = OnesyHeap.min.make([4, 1, 7, 3, 5, 4, 7]);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.min.make([4, 1, 7, 3, 5, 4, 7]);
+        const value = window.OnesyHeap.OnesyHeap.min.make([4, 1, 7, 3, 5, 4, 7]);
 
         return value.array;
       });
@@ -45,10 +45,10 @@ group('AmauiHeap', () => {
     });
 
     to('max', async () => {
-      const value = AmauiHeap.max.make([4, 1, 7, 3, 5, 4, 7]);
+      const value = OnesyHeap.max.make([4, 1, 7, 3, 5, 4, 7]);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.max.make([4, 1, 7, 3, 5, 4, 7]);
+        const value = window.OnesyHeap.OnesyHeap.max.make([4, 1, 7, 3, 5, 4, 7]);
 
         return value.array;
       });
@@ -61,10 +61,10 @@ group('AmauiHeap', () => {
     group('make', () => {
 
       to('default', async () => {
-        const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+        const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
         const valueBrowsers = await evaluate((window: any) => {
-          const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+          const value = window.OnesyHeap.OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
           return value.array;
         });
@@ -75,10 +75,10 @@ group('AmauiHeap', () => {
       });
 
       to('min', async () => {
-        const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7], 'min');
+        const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7], 'min');
 
         const valueBrowsers = await evaluate((window: any) => {
-          const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7], 'min');
+          const value = window.OnesyHeap.OnesyHeap.make([4, 1, 7, 3, 5, 4, 7], 'min');
 
           return value.array;
         });
@@ -89,10 +89,10 @@ group('AmauiHeap', () => {
       });
 
       to('max', async () => {
-        const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7], 'max');
+        const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7], 'max');
 
         const valueBrowsers = await evaluate((window: any) => {
-          const value = window.AmauiHeap.AmauiHeap.max.make([4, 1, 7, 3, 5, 4, 7], 'max');
+          const value = window.OnesyHeap.OnesyHeap.max.make([4, 1, 7, 3, 5, 4, 7], 'max');
 
           return value.array;
         });
@@ -105,10 +105,10 @@ group('AmauiHeap', () => {
     });
 
     to('left', async () => {
-      const value = AmauiHeap.left(1);
+      const value = OnesyHeap.left(1);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.left(1);
+        const value = window.OnesyHeap.OnesyHeap.left(1);
 
         return value;
       });
@@ -119,10 +119,10 @@ group('AmauiHeap', () => {
     });
 
     to('right', async () => {
-      const value = AmauiHeap.right(1);
+      const value = OnesyHeap.right(1);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.right(1);
+        const value = window.OnesyHeap.OnesyHeap.right(1);
 
         return value;
       });
@@ -133,10 +133,10 @@ group('AmauiHeap', () => {
     });
 
     to('parent', async () => {
-      const value = AmauiHeap.parent(4);
+      const value = OnesyHeap.parent(4);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.parent(4);
+        const value = window.OnesyHeap.OnesyHeap.parent(4);
 
         return value;
       });
@@ -147,10 +147,10 @@ group('AmauiHeap', () => {
     });
 
     to('isPriority', async () => {
-      const value = [AmauiHeap.isPriority(0), AmauiHeap.isPriority(4)];
+      const value = [OnesyHeap.isPriority(0), OnesyHeap.isPriority(4)];
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = [window.AmauiHeap.AmauiHeap.isPriority(0), window.AmauiHeap.AmauiHeap.isPriority(4)];
+        const value = [window.OnesyHeap.OnesyHeap.isPriority(0), window.OnesyHeap.OnesyHeap.isPriority(4)];
 
         return value;
       });
@@ -161,10 +161,10 @@ group('AmauiHeap', () => {
     });
 
     to('isLeft', async () => {
-      const value = [AmauiHeap.isLeft(0), AmauiHeap.isLeft(1), AmauiHeap.isLeft(4)];
+      const value = [OnesyHeap.isLeft(0), OnesyHeap.isLeft(1), OnesyHeap.isLeft(4)];
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = [window.AmauiHeap.AmauiHeap.isLeft(0), window.AmauiHeap.AmauiHeap.isLeft(1), window.AmauiHeap.AmauiHeap.isLeft(4)];
+        const value = [window.OnesyHeap.OnesyHeap.isLeft(0), window.OnesyHeap.OnesyHeap.isLeft(1), window.OnesyHeap.OnesyHeap.isLeft(4)];
 
         return value;
       });
@@ -175,10 +175,10 @@ group('AmauiHeap', () => {
     });
 
     to('isRight', async () => {
-      const value = [AmauiHeap.isRight(0), AmauiHeap.isRight(1), AmauiHeap.isRight(4)];
+      const value = [OnesyHeap.isRight(0), OnesyHeap.isRight(1), OnesyHeap.isRight(4)];
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = [window.AmauiHeap.AmauiHeap.isRight(0), window.AmauiHeap.AmauiHeap.isRight(1), window.AmauiHeap.AmauiHeap.isRight(4)];
+        const value = [window.OnesyHeap.OnesyHeap.isRight(0), window.OnesyHeap.OnesyHeap.isRight(1), window.OnesyHeap.OnesyHeap.isRight(4)];
 
         return value;
       });
@@ -189,10 +189,10 @@ group('AmauiHeap', () => {
     });
 
     to('isLeaf', async () => {
-      const value = [AmauiHeap.isLeaf(0, [1, 2, 3, 4, 5]), AmauiHeap.isLeaf(1, [1, 2, 3, 4, 5]), AmauiHeap.isLeaf(4, [1, 2, 3, 4, 5])];
+      const value = [OnesyHeap.isLeaf(0, [1, 2, 3, 4, 5]), OnesyHeap.isLeaf(1, [1, 2, 3, 4, 5]), OnesyHeap.isLeaf(4, [1, 2, 3, 4, 5])];
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = [window.AmauiHeap.AmauiHeap.isLeaf(0, [1, 2, 3, 4, 5]), window.AmauiHeap.AmauiHeap.isLeaf(1, [1, 2, 3, 4, 5]), window.AmauiHeap.AmauiHeap.isLeaf(4, [1, 2, 3, 4, 5])];
+        const value = [window.OnesyHeap.OnesyHeap.isLeaf(0, [1, 2, 3, 4, 5]), window.OnesyHeap.OnesyHeap.isLeaf(1, [1, 2, 3, 4, 5]), window.OnesyHeap.OnesyHeap.isLeaf(4, [1, 2, 3, 4, 5])];
 
         return value;
       });
@@ -204,15 +204,15 @@ group('AmauiHeap', () => {
 
   });
 
-  group('amauiHeap', async () => {
+  group('onesyHeap', async () => {
 
     group('variant', async () => {
 
       to('default', async () => {
-        const value = new AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
+        const value = new OnesyHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
         const valueBrowsers = await evaluate((window: any) => {
-          const value = new window.AmauiHeap.AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
+          const value = new window.OnesyHeap.OnesyHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
           return value.array;
         });
@@ -223,10 +223,10 @@ group('AmauiHeap', () => {
       });
 
       to('min', async () => {
-        const value = new AmauiHeap('min').make([4, 1, 7, 3, 5, 4, 7]);
+        const value = new OnesyHeap('min').make([4, 1, 7, 3, 5, 4, 7]);
 
         const valueBrowsers = await evaluate((window: any) => {
-          const value = new window.AmauiHeap.AmauiHeap('min').make([4, 1, 7, 3, 5, 4, 7]);
+          const value = new window.OnesyHeap.OnesyHeap('min').make([4, 1, 7, 3, 5, 4, 7]);
 
           return value.array;
         });
@@ -237,10 +237,10 @@ group('AmauiHeap', () => {
       });
 
       to('max', async () => {
-        const value = new AmauiHeap('max').make([4, 1, 7, 3, 5, 4, 7]);
+        const value = new OnesyHeap('max').make([4, 1, 7, 3, 5, 4, 7]);
 
         const valueBrowsers = await evaluate((window: any) => {
-          const value = new window.AmauiHeap.AmauiHeap('max').make([4, 1, 7, 3, 5, 4, 7]);
+          const value = new window.OnesyHeap.OnesyHeap('max').make([4, 1, 7, 3, 5, 4, 7]);
 
           return value.array;
         });
@@ -253,10 +253,10 @@ group('AmauiHeap', () => {
     });
 
     to('array', async () => {
-      const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+      const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+        const value = window.OnesyHeap.OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
         return value.array;
       });
@@ -267,10 +267,10 @@ group('AmauiHeap', () => {
     });
 
     to('first', async () => {
-      const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+      const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+        const value = window.OnesyHeap.OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
         return value.first.value;
       });
@@ -281,10 +281,10 @@ group('AmauiHeap', () => {
     });
 
     to('leafs', async () => {
-      const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+      const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+        const value = window.OnesyHeap.OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
         return value.leafs.map(item => item.value);
       });
@@ -295,10 +295,10 @@ group('AmauiHeap', () => {
     });
 
     to('remove', async () => {
-      const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+      const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+        const value = window.OnesyHeap.OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
         return [value.remove.value, value.array];
       });
@@ -309,10 +309,10 @@ group('AmauiHeap', () => {
     });
 
     to('add', async () => {
-      const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]).add(4);
+      const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]).add(4);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]).add(4);
+        const value = window.OnesyHeap.OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]).add(4);
 
         return value.array;
       });
@@ -323,10 +323,10 @@ group('AmauiHeap', () => {
     });
 
     to('make', async () => {
-      const value = new AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
+      const value = new OnesyHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = new window.AmauiHeap.AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
+        const value = new window.OnesyHeap.OnesyHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
         return value.array;
       });
@@ -337,14 +337,14 @@ group('AmauiHeap', () => {
     });
 
     to('forEach', async () => {
-      const value = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+      const value = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
       const output = [];
 
       value.forEach((...args: any[]) => output.push(args.map(item => item?.value || item)));
 
       const valueBrowsers = await evaluate((window: any) => {
-        const value = window.AmauiHeap.AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+        const value = window.OnesyHeap.OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
         const output = [];
 

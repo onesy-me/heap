@@ -1,1 +1,1 @@
-export * from './AmauiHeap';
+export * from './OnesyHeap';

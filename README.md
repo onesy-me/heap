@@ -4,11 +4,11 @@
 
 <p align='center'>
   <a target='_blank' rel='noopener noreferrer' href='#'>
-    <img src='utils/images/logo.svg' alt='amaui logo' />
+    <img src='utils/images/logo.svg' alt='onesy logo' />
   </a>
 </p>
 
-<h1 align='center'>amaui Heap</h1>
+<h1 align='center'>onesy Heap</h1>
 
 <p align='center'>
   Min/Max Heap
@@ -39,7 +39,7 @@
 ### Add
 
 ```sh
-yarn add @amaui/heap
+yarn add @onesy/heap
 ```
 
 ### Use cases
@@ -50,18 +50,18 @@ yarn add @amaui/heap
 ### Use
 
 ```javascript
-  import { AmauiHeap } from '@amaui/heap';
+  import { OnesyHeap } from '@onesy/heap';
 
   // Make a new heap instance
   // with an optional initial value a variant (min or max)
   // a min heap as a default value
-  const amauiMinHeap = new AmauiHeap();
+  const onesyMinHeap = new OnesyHeap();
 
-  // Add a amaui node / value
-  amauiMinHeap.add(4);
+  // Add a onesy node / value
+  onesyMinHeap.add(4);
 
   // You can also make a heap from array of values
-  amauiMinHeap.make([4, 44, 54, 14, 31, 37, 24]);
+  onesyMinHeap.make([4, 44, 54, 14, 31, 37, 24]);
 
   // values
          4
@@ -72,7 +72,7 @@ yarn add @amaui/heap
    44   31 37   54
 
   // Remove priority min (first) value
-  amauiMinHeap.remove();
+  onesyMinHeap.remove();
 
   // 4
 
