@@ -2,7 +2,7 @@
   "name": "@onesy/heap",
   "version": "1.0.0",
   "description": "Min/Max Heap",
-  "repository": "https://github.com/onesy-org/onesy-heap.git",
+  "repository": "https://github.com/onesy-me/heap.git",
   "author": "Lazar <lazareric2@gmail.com>",
   "license": "MIT",
   "private": false,
